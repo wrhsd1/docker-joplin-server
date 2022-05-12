@@ -27,7 +27,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v3
         with:
-          images: wrhsd/joplin-server-beta # list of Docker images to use as base name for tags
+          images: wrhsd/joplin-server-arm64 # list of Docker images to use as base name for tags
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
@@ -60,14 +60,7 @@ jobs:
         with:
           context: ./joplin/
           file: ./joplin/Dockerfile
-          platforms: linux/amd64,linux/arm64,linux/arm/v7
+          platforms: linux/arm64
           push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.docker_meta.outputs.tags }}
           labels: ${{ steps.docker_meta.outputs.labels }}
-      -
-        name: Update repo description
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: wrhsd/joplin-server-beta
