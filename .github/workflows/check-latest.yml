@@ -18,7 +18,7 @@ jobs:
 
     - run: |
         sudo apt install jq -y
-        RELEASE_VER=$(jq -r 'map(select(.prerelease)) | first | .tag_name' <<< $(curl --silent https://api.github.com/repos/zadam/trilium/releases))
+        RELEASE_VER=$(jq -r 'map(select(.prerelease)) | first | .tag_name' <<< $(curl --silent https://api.github.com/repos/laurent22/joplin/releases))
 
         LOCAL_VER=$(git -c 'versionsort.suffix=-' \
             ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/flosoft/docker-joplin-server.git \
