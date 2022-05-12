@@ -21,7 +21,7 @@ jobs:
         RELEASE_VER=$(jq -r 'map(select(.prerelease)) | first | .tag_name' <<< $(curl --silent https://api.github.com/repos/laurent22/joplin/releases))
 
         LOCAL_VER=$(git -c 'versionsort.suffix=-' \
-            ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/flosoft/docker-joplin-server.git \
+            ls-remote --exit-code --refs --sort='version:refname' --tags https://github.com/wrhsd/docker-joplin-server.git \
             | tail --lines=1 \
             | cut --delimiter='/' --fields=3)
 
