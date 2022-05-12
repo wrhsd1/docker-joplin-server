@@ -19,15 +19,15 @@ jobs:
       -
         name: Pull latest
         run: |
-          git clone https://github.com/laurent22/joplin.git joplin-1
-          mv joplin-1/* ./
+          git clone https://github.com/laurent22/joplin.git joplin
+          mv Dockerfile ./joplin
           ls
       -
         name: Docker meta
         id: docker_meta
         uses: docker/metadata-action@v3
         with:
-          images: florider89/joplin-server-beta # list of Docker images to use as base name for tags
+          images: wrhsd/joplin-server-beta # list of Docker images to use as base name for tags
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
@@ -72,4 +72,4 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: florider89/joplin-server-beta
+          repository: wrhsd/joplin-server-beta
