@@ -34,5 +34,9 @@ jobs:
             git tag ${RELEASE_VER}
             git push origin ${RELEASE_VER}
         else
-            echo "No updates available..."
+            echo "Local version: $LOCAL_VER"
+            echo "Latest upstream version: $RELEASE_VER"
+            echo "Updating to latest version..."
+            git tag ${RELEASE_VER}
+            git push origin ${RELEASE_VER}
         fi
