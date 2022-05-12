@@ -17,7 +17,7 @@ jobs:
         token: ${{ secrets.GH_PAT }} # Required due to: https://github.community/t/github-action-not-triggering-gh-pages-upon-push/16096
 
     - run: |
-        apt install jq -y
+        sudo apt install jq -y
         RELEASE_VER=$(jq -r 'map(select(.prerelease)) | first | .tag_name' <<< $(curl --silent https://api.github.com/repos/zadam/trilium/releases))
 
         LOCAL_VER=$(git -c 'versionsort.suffix=-' \
