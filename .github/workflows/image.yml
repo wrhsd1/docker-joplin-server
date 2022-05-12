@@ -28,7 +28,7 @@ jobs:
         id: docker_meta
         uses: docker/metadata-action@v3
         with:
-          images: wrhsd/joplin-server-beta # list of Docker images to use as base name for tags
+          images: florider89/joplin-server-beta # list of Docker images to use as base name for tags
           tags: |
             type=semver,pattern={{version}}
             type=semver,pattern={{major}}.{{minor}}
@@ -73,4 +73,4 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
-          repository: wrhsd/joplin-server-beta
+          repository: florider89/joplin-server-beta
